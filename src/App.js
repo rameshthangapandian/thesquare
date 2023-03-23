@@ -3,12 +3,12 @@ import './App.css';
 
 function App() {
 
-  const [number, setNumber] = useState("");
+  const [userinput, setUserInput] = useState("");
   const [boxes, setBoxes] = useState([]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    setNumber(value);
+    setUserInput(value);
     const numBoxes = value ** 2;
     const newBoxes = Array.from({ length: numBoxes }, (_, i) => i + 1);
     setBoxes(newBoxes);
@@ -16,8 +16,8 @@ function App() {
 
   const containerStyle = {
     display: "grid",
-    gridTemplateColumns: `repeat(${number}, 1fr)`,
-    gridTemplateRows: `repeat(${number}, 1fr)`,
+    gridTemplateColumns: `repeat(${userinput}, 1fr)`,
+    gridTemplateRows: `repeat(${userinput}, 1fr)`,
     gridGap: "5px",
     marginTop: "10px",
   };
@@ -38,11 +38,11 @@ function App() {
         <p>
           Enter the number in the text box
         </p>
-        <input type="number" className="e-input" value={number} onChange={handleInputChange} />
+        <input type="number" className="e-input" value={userinput} onChange={handleInputChange} />
         <div style={containerStyle}>
-        {boxes.map((box) => (
+        {boxes.map((box) => 
           <div key={box} style={boxStyle} />
-        ))}
+        )}
         </div>
           </header>
     </div>
